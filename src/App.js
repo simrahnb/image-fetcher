@@ -1,3 +1,5 @@
+import './input.css'
+
 import SearchBar from "./components/SearchBar";
 import Header from "./components/Header";
 import ImageResults from "./components/ImageResults";
