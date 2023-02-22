@@ -7,7 +7,7 @@ import { ImageContext } from "../App";
 
 export default function ImageResults() {
   const { response, error, isLoading, fetchImages, initial, setInitial } =
-  useContext(ImageContext);
+    useContext(ImageContext);
 
   return (
     <div class=" mx-auto px-5 py-2 lg:px-32 lg:pt-12">
