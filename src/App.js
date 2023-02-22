@@ -1,4 +1,4 @@
-import './input.css'
+import "./input.css";
 
 import SearchBar from "./components/SearchBar";
 import Header from "./components/Header";
