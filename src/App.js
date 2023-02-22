@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import SearchBar from "./components/SearchBar";
+import Header from "./components/Header";
+import ImageResults from "./components/ImageResults";
+
+// hooks
+import { useAxios } from "./hooks/useAxios";
+import { useState } from "react";
+import { createContext } from "react";
+
+// context
+export const ImageContext = createContext();
 
 function App() {
+  const [searchImage, setSearchImage] = useState("");
+  const [initial, setInitial] = useState(false);
+  const { response, isLoading, error, fetchImages } = useAxios(
+    `search/photos?page=1&per_page=20&client_id=wp4V2zmPPuNtShrse3_WBqmHSPuYXJE6EjsRxUROzKo`
+  );
+
+  const value = {
+    response,
+    isLoading,
+    error,
+    fetchImages,
+    searchImage,
+    setSearchImage,
+    initial,
+    setInitial,
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ImageContext.Provider value={value}>
+      <Header />
+      <SearchBar />
+      <ImageResults />
+    </ImageContext.Provider>
   );
 }
 
